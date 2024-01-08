@@ -1,49 +1,53 @@
 "use client";
 import { Transition } from "@headlessui/react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const pathName = usePathname();
   const navMenu = (
     <>
       <Link
-        href="#"
-        className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md tracking-widest text-sm font-medium"
+        href="/"
+        className={` hover:bg-gray-700 text-white px-3 py-2 rounded-md tracking-widest text-sm font-medium ${
+          pathName === "/" && "bg-slate-500"
+        }`}
       >
         HOME
       </Link>
 
       <Link
-        to="/contact"
-        href="#"
+        href="/contact"
         className="text-gray-300 hover:bg-gray-700 hover:text-white tracking-widest px-3 py-2 rounded-md text-sm font-medium"
       >
         CONTACT
       </Link>
 
       <Link
-        href="#"
+        href="/blog"
         className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium tracking-widest"
       >
         BLOG
       </Link>
 
       <Link
-        href="#"
+        href="/vendors"
         className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium tracking-widest"
       >
         VENDORS
       </Link>
 
       <Link
-        href="#"
+        href="/compare"
         className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium tracking-widest"
       >
         COMPARE
       </Link>
     </>
   );
+
   return (
     <nav className="bg-black mb-1">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

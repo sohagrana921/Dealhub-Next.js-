@@ -15,9 +15,9 @@ const Banner = () => {
         interval={800}
         infiniteLoop={true}
       >
-        <Image src={image1} alt="" />
-        <Image src={image2} alt="" />
-        <Image src={image3} alt="" />
+        <Image src={image1} alt="" className="h-[400px]" />
+        <Image src={image2} alt="" className="h-[400px]" />
+        <Image src={image3} alt="" className="h-[400px]" />
       </Carousel>
     </div>
   );
