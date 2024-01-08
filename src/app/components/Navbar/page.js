@@ -1,132 +1,115 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
-import { AiOutlineSearch } from "react-icons/ai";
-import { BiSolidUser } from "react-icons/bi";
-
+import { Transition } from "@headlessui/react";
 import Link from "next/link";
-import Image from "next/image";
-const Header = () => {
-  const [category, setCategory] = useState("All Category");
-  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
-  const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
-  const userMenuRef = useRef(null);
+import React, { useState } from "react";
 
-  const categoryOptions = [
-    "All Category",
-    "Audio & Home Theater",
-    "Camera & Photo",
-    "Games & Consoles",
-    "Computer & Laptop",
-    "Headphone & Speaker",
-    "Smartphone & Accessories",
-    "Battary & Accessories",
-    "Furnitures",
-    "Television",
-  ];
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const navMenu = (
+    <>
+      <Link
+        href="#"
+        className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md tracking-widest text-sm font-medium"
+      >
+        HOME
+      </Link>
 
-  const handleCategoryChange = (value) => {
-    setCategory(value);
-  };
+      <Link
+        to="/contact"
+        href="#"
+        className="text-gray-300 hover:bg-gray-700 hover:text-white tracking-widest px-3 py-2 rounded-md text-sm font-medium"
+      >
+        CONTACT
+      </Link>
 
-  const toggleUserMenu = () => {
-    setIsUserMenuOpen(!isUserMenuOpen);
-  };
+      <Link
+        href="#"
+        className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium tracking-widest"
+      >
+        BLOG
+      </Link>
 
-  const toggleMobileSearch = () => {
-    setIsMobileSearchOpen(!isMobileSearchOpen);
-  };
+      <Link
+        href="#"
+        className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium tracking-widest"
+      >
+        VENDORS
+      </Link>
 
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (userMenuRef.current && !userMenuRef.current.contains(event.target)) {
-        setIsUserMenuOpen(false);
-      }
-    }
-
-    document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+      <Link
+        href="#"
+        className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium tracking-widest"
+      >
+        COMPARE
+      </Link>
+    </>
+  );
   return (
-    <div className="bg-white text-black py-1 pl-2">
-      <div className="container mx-auto flex justify-between items-center">
-        <div>
-          <Link href="/">
-            <Image
-              src="/thumb.png"
-              width={200}
-              height={100}
-              alt="Dealhub Logo"
-              className="pr-1"
-            ></Image>
-          </Link>
-        </div>
-        <div className="flex items-center">
-          <div className="relative inline-block text-white border mr-2">
-            <select
-              className="bg-white text-black px-3 py-3 focus:outline-none"
-              value={category}
-              onChange={(e) => handleCategoryChange(e.target.value)}
-            >
-              {categoryOptions.map((option, index) => (
-                <option key={index} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
-          </div>
-          {/* For medium and larger screens, show search input field */}
-          <div className=" border hidden md:inline">
-            <input
-              type="text"
-              className="bg-white text-black px-3 py-2 focus:outline-none md:mt-2"
-              placeholder="I'm searching for..."
-            />
-            <button className="md:text-2xl md:mr-2">
-              <AiOutlineSearch />
-            </button>
-          </div>
-          {/* For mobile devices, show search icon and toggle search input on click */}
-          {isMobileSearchOpen ? (
-            <div className="divide-y-2 border md:hidden">
-              <input
-                type="text"
-                className="bg-white text-black px-3 py-3 focus:outline-none"
-                placeholder="I'm searching for..."
-              />
-            </div>
-          ) : (
-            <button
-              className="px-3 py-2 md:hidden"
-              onClick={toggleMobileSearch}
-            >
-              <AiOutlineSearch />
-            </button>
-          )}
-          <div
-            className="ml-4 relative inline-block text-black"
-            ref={userMenuRef}
-          >
-            <div className="cursor-pointer text-4xl" onClick={toggleUserMenu}>
-              <BiSolidUser />
-            </div>
-            {isUserMenuOpen && (
-              <div className="absolute right-0 mt-2 py-2 w-32 bg-white text-black rounded-lg shadow-lg">
-                <div className="py-1 px-4 cursor-pointer hover:bg-gray-200">
-                  My Profile
-                </div>
-                <div className="py-1 px-4 cursor-pointer hover-bg-gray-200">
-                  Wishlist
-                </div>
+    <nav className="bg-black mb-1">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-start h-16">
+          <div className="flex items-center">
+            <div className="hidden md:block">
+              <div className="ml-10 flex items-baseline space-x-4">
+                {navMenu}
               </div>
-            )}
+            </div>
+          </div>
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              type="button"
+              className="bg-gray-900 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+              aria-controls="mobile-menu"
+              aria-expanded="false"
+            >
+              <span className="sr-only flex">Open main menu</span>
+              {!isOpen ? (
+                <span className="font-bold text-white border-y-2">MENU</span>
+              ) : (
+                <svg
+                  className="block h-6 w-6"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              )}
+            </button>
           </div>
         </div>
       </div>
-    </div>
+
+      <Transition
+        show={isOpen}
+        enter="transition ease-out duration-100 transform"
+        enterFrom="opacity-0 scale-95"
+        enterTo="opacity-100 scale-100"
+        leave="transition ease-in duration-75 transform"
+        leaveFrom="opacity-100 scale-100"
+        leaveTo="opacity-0 scale-95"
+      >
+        {(ref) => (
+          <div className="md:hidden" id="mobile-menu">
+            <div
+              ref={ref}
+              className="px-2 pt-2 pb-3 flex  flex-col space-y-1 sm:px-3"
+            >
+              {navMenu}
+            </div>
+          </div>
+        )}
+      </Transition>
+    </nav>
   );
 };
 
-export default Header;
+export default Navbar;
