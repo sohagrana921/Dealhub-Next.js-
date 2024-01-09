@@ -1,5 +1,7 @@
 import Link from "next/link";
 import React from "react";
+import { HiChevronDoubleRight } from "react-icons/hi";
+
 import { FaStaylinked } from "react-icons/fa";
 const Categories = () => {
   const categories = [
@@ -42,7 +44,7 @@ const Categories = () => {
   ];
 
   return (
-    <div className="space-y-2 border-2">
+    <div className="space-y-1 border-b-2 rounded-xl md:mt-0 mt-2">
       <div className="bg-black py-2 px-2 text-white flex gap-3 items-center">
         <span>
           <FaStaylinked></FaStaylinked>
@@ -51,11 +53,11 @@ const Categories = () => {
       </div>
       {categories.map((category) => (
         <Link
-          className="block hover:border-l-4 border-red-500 hover:text-red-500 pl-2 py-1"
+          className="block bg-slate-100 rounded hover:border-l-4 border-orange-500 hover:text-orange-500 py-1 pl-2 hover:font-semibold"
           key={category.id}
           href={`/category/${category.id}`}
         >
-          {category.name}
+          <HiChevronDoubleRight className="inline-block" /> {category.name}
         </Link>
       ))}
     </div>

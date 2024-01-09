@@ -8,16 +8,16 @@ import image2 from "/public/banner-img2.jpg";
 import image3 from "/public/banner-img3.jpg";
 const Banner = () => {
   return (
-    <div>
+    <div className="mt-14 md:mt-0">
       <Carousel
         showThumbs={false}
         autoPlay={true}
         interval={800}
         infiniteLoop={true}
       >
-        <Image src={image1} alt="" className="h-[400px]" />
-        <Image src={image2} alt="" className="h-[400px]" />
-        <Image src={image3} alt="" className="h-[400px]" />
+        <Image src={image1} alt="" className="md:h-[400px] rounded-md" />
+        <Image src={image2} alt="" className="md:h-[400px] rounded-md" />
+        <Image src={image3} alt="" className="md:h-[400px] rounded-md" />
       </Carousel>
     </div>
   );

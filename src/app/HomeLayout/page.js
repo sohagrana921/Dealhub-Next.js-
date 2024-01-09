@@ -4,7 +4,7 @@ import Categories from "../components/Categories/page";
 export default function HomeLayout() {
   return (
     <main>
-      <div className="pt-6 mx-2 hidden bg-white lg:block mt-24">
+      <div className="pt-4 mx-2 hidden bg-white lg:block mt-24">
         <div className="grid grid-cols-5 gap-2 ">
           {/* Categories */}
           <div className="col-span-1">
