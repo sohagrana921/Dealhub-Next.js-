@@ -6,7 +6,7 @@ import logo from "/public/thumb.png";
 const Header = () => {
   const user = false;
   return (
-    <div className=" w-full mx-auto px-2 text-black py-2 bg-slate-100 border fixed z-10 top-0">
+    <div className="w-full mx-auto px-2 text-black py-1 bg-slate-100 border fixed z-10 top-0">
       <div className="w-full mx-auto flex gap-4 items-center ">
         <div className="w-1/5">
           <Link href="/">

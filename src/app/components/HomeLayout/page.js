@@ -1,5 +1,5 @@
-import Banner from "../components/Banner/page";
-import Categories from "../components/Categories/page";
+import Banner from "../Banner/page";
+import Categories from "../Categories/page";
 
 export default function HomeLayout() {
   return (
